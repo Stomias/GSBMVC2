@@ -16,15 +16,9 @@
 
 class PdoGsb{   		
       	private $serveur='mysql:host=localhost';
-      	private $bdd='dbname=gsb_frais';   		
       	private $user='userGsb' ;    		
       	private $mdp='secret' ;	
         private $monPdo; //objet de connection à la bdd
-	private static $monPdoGsb=null; //instance unique de la classe
-/**
- * Constructeur privé, crée l'instance de PDO qui sera sollicitée
- * pour toutes les méthodes de la classe
- */				
 	private function __construct(){
             $this->monPdo = new PDO($this->serveur.';'.$this->bdd, $this->user, $this->mdp,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION)); 
             $this->monPdo->query("SET CHARACTER SET utf8");
