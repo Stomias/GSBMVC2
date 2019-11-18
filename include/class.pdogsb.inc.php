@@ -14,11 +14,13 @@
  * @link       http://www.php.net/manual/fr/book.pdo.php
  */
 
-class PdoGsb{   		
-      	private $serveur='mysql:host=localhost';
-      	private $user='userGsb' ;    		
-      	private $mdp='secret' ;	
-        private $monPdo; //objet de connection à la bdd
+class PdoGsb{   			
+		private $serveur='mysql:host=localhost';
+		private $bdd='dbname=ppe_gsb';   		
+		private $user='userGsb' ;    		
+		private $mdp='secret' ;	
+		private $monPdo; //objet de connection à la bdd
+		private static $monPdoGsb=null; //instance unique de la classe
 	private function __construct(){
             $this->monPdo = new PDO($this->serveur.';'.$this->bdd, $this->user, $this->mdp,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION)); 
             $this->monPdo->query("SET CHARACTER SET utf8");
